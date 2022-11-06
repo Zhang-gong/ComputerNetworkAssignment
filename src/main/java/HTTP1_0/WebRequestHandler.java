@@ -37,7 +37,7 @@ class WebRequestHandler {
 
     }
 
-    public void processRequest()
+    public void processRequest()//在这里正式开始处理request
     {
 
         try {
@@ -76,7 +76,7 @@ class WebRequestHandler {
         // parse URL to retrieve file name
         urlName = request[1];
 
-        if ( urlName.startsWith("/") == true )
+        if ( urlName.startsWith("\\") == true )
             urlName  = urlName.substring(1);
 
         // debugging

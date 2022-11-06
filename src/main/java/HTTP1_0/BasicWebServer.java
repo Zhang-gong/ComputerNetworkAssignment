@@ -12,7 +12,7 @@ class BasicWebServer{
 
     public static int serverPort = 6789;
     //public static String WWW_ROOT = "/home/httpd/html/zoo/classes/cs433/";
-    public static String WWW_ROOT = "./";
+    public static String WWW_ROOT = "D:\\code\\JAVA\\assignment3\\";
 
     public static void main(String args[]) throws Exception  {
 

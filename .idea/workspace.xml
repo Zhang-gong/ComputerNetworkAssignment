@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b068f9-54d4-44b9-b057-dd732dc9ddbd" name="变更" comment="导入文件">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Client/ClientThread.java" afterDir="false" />
+    <list default="true" id="d4b068f9-54d4-44b9-b057-dd732dc9ddbd" name="变更" comment="编写自己的client端">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WaitNotify/ServiceThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WaitNotify/ServiceThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HTTP1_0/BasicWebServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HTTP1_0/BasicWebServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HTTP1_0/WebRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HTTP1_0/WebRequestHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +54,19 @@
   }
 }</component>
   <component name="RunManager" selected="应用程序.Client">
+    <configuration name="BasicWebServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HTTP1_0.BasicWebServer" />
+      <module name="assignment3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="HTTP1_0.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.Client" />
       <module name="assignment3" />
@@ -73,19 +86,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="WaitNotify.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShareExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ShareExample.ShareExample" />
-      <module name="assignment3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ShareExample.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,19 +121,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="应用程序.BasicWebServer" />
       <item itemvalue="应用程序.Client" />
       <item itemvalue="应用程序.ShareWelcome.Server" />
       <item itemvalue="应用程序.Server" />
-      <item itemvalue="应用程序.ShareExample" />
       <item itemvalue="应用程序.SyncOverhead" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.Client" />
+        <item itemvalue="应用程序.BasicWebServer" />
         <item itemvalue="应用程序.Server" />
         <item itemvalue="应用程序.ShareWelcome.Server" />
         <item itemvalue="应用程序.SyncOverhead" />
-        <item itemvalue="应用程序.ShareExample" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667705932514</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="编写自己的client端">
+      <created>1667729207358</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667729207358</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,7 +183,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="导入文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="导入文件" />
+    <MESSAGE value="编写自己的client端" />
+    <option name="LAST_COMMIT_MESSAGE" value="编写自己的client端" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -203,7 +211,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Client/Client.java</url>
-          <line>43</line>
+          <line>46</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -218,8 +226,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Client/Client.java</url>
-          <line>31</line>
+          <line>34</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/HTTP1_0/WebRequestHandler.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/HTTP1_0/WebRequestHandler.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -230,6 +248,9 @@
     </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/assignment3$BasicWebServer.ic" NAME="BasicWebServer 覆盖结果" MODIFIED="1667730809715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>HTTP1_0.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/assignment3$Server.ic" NAME="Server 覆盖结果" MODIFIED="1667727106255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>WaitNotify.*</FILTER>
     </SUITE>

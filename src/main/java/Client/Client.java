@@ -14,7 +14,7 @@ public class Client {
     public final static int THREAD_COUNT = 3;
     private ClientThread[] threads;
     private List<Socket> connSockPool;
-
+    private String serverResponse;
     /* Constructor: starting all threads at once */
     public Client(int ClientPort) {
 
@@ -28,7 +28,10 @@ public class Client {
 
             os = helloSocket.getOutputStream();//outputstream 用于输出
 
-            String greeting="Hello Alice. How are you?"+"\n";
+            String greeting="GET \\src\\file\\file1.html HTTP/1.0\n" +
+                    "Host: 127.0.0.1\n" +
+                    "this is message!this is message!this is message!"+"\n"
+                    +"\n";
             os.write(greeting.getBytes());
 
             //connSockPool = new Vector<Socket>();
@@ -43,6 +46,11 @@ public class Client {
 //            }
             InputStream in =helloSocket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(in,"UTF-8"));
+            serverResponse = reader.readLine();
+            while ( !serverResponse.equals("") ) {
+                serverResponse = reader.readLine();
+                System.out.println(serverResponse);
+            }
             String serverResponse = reader.readLine();
             System.out.println(serverResponse);
         } catch (Exception e) {
