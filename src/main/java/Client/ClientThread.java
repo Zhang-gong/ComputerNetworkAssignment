@@ -1,18 +1,18 @@
-package WaitNotify;
+package Client;
 
 /*
  *
- * XMU CNNS CLass Demo
+ * AUTHOR : Zhang gong
  */
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class ServiceThread extends Thread {
+public class ClientThread extends Thread {
 
     private List<Socket> pool;
 
-    public ServiceThread(List<Socket> pool) {
+    public ClientThread(List<Socket> pool) {
         this.pool = pool;
     }
 
@@ -48,11 +48,10 @@ public class ServiceThread extends Thread {
     private void serveARequest(Socket connSock) {
         try {
             // create read stream to get input
-            System.out.println("clientSentence1");
             BufferedReader inFromClient =
                     new BufferedReader(new InputStreamReader(connSock.getInputStream()));
             String clientSentence = inFromClient.readLine();
-            System.out.println("clientSentence2");
+
             // process input
             String capitalizedSentence = clientSentence.toUpperCase() + '\n';
 
