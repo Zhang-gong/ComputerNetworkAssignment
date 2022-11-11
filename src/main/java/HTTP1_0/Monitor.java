@@ -1,4 +1,5 @@
-package Client;
+package HTTP1_0;
+
 /*
  *
  * AUTHOR : Zhang gong
@@ -11,41 +12,46 @@ import java.util.*;
 import java.net.*;
 import java.text.SimpleDateFormat;
 
-public class Client {
+public class Monitor {
 
     //private ServerSocket welcomeSocket;
     private Socket helloSocket;
+
     public final static int THREAD_COUNT = 3;
-    private ClientThread[] threads;
+    private MonitorThread[] threads;
     private List<Socket> connSockPool;
     private static DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private String serverResponse;
 
     /* Constructor: starting all threads at once */
-    public Client(int ClientPort) {
+    public Monitor(int ClientPort) {
 
         OutputStream os = null;
 
         try {
             // create server socket
-            Socket helloSocket = new Socket(InetAddress.getByName("10.30.77.4"), ClientPort);
+            Socket helloSocket = new Socket(InetAddress.getByName("127.0.0.1"), ClientPort);
 
             System.out.println("Client started; Sending to  " + ClientPort);
 
             os = helloSocket.getOutputStream();//outputstream 用于输出
             LocalDateTime time = LocalDateTime.now();
             String localTime = df.format(time);
-
-            String greeting = "GET \\file\\ HTTP/1.0\r\n" +
+            String state="start";
+            state="close";
+            String greeting = "GET \\load HTTP/1.0\r\n" +
                     "Host: zg\r\n" +
+                    "Heartbeat: "+state+"\r\n"+
                     "If-Modified-Since: " + localTime + "\r\n" +
-                    "User-Agent: iphone" + "\r\n" +
-                    "this is a message!" + "\r\n"
-                    +"\r\n";
+                    "User-Agent: monitor" + "\r\n" +
+                    "this is heartbeat function!" + "\r\n"
+                    + "\r\n";
             os.write(greeting.getBytes());
+
             //connSockPool = new Vector<Socket>();
+
             // create thread pool
-            threads = new ClientThread[THREAD_COUNT];
+            threads = new MonitorThread[THREAD_COUNT];
 
             // start all threads 这里先不测试   稍后添加多线程
 //            for (int i = 0; i < threads.length; i++) {
@@ -55,8 +61,8 @@ public class Client {
             InputStream in = helloSocket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             serverResponse = reader.readLine();
-            System.out.println(serverResponse);//查看状态
-            String[] state = serverResponse.split("\\s");
+            System.out.println(serverResponse);
+
             while (!serverResponse.equals("")) {
                 serverResponse = reader.readLine();
                 System.out.println(serverResponse);
@@ -91,7 +97,7 @@ public class Client {
         if (args.length >= 1)
             Port = Integer.parseInt(args[0]);
 
-        Client client = new Client(Port);
+        Monitor client = new Monitor(Port);
         //client.run();
 
     } // end of main

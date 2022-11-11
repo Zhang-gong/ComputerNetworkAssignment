@@ -1,19 +1,22 @@
-package HTTP1_0;
+package MultiThreadServer;
 
 /**
  * * XMU CNNS Class Demo Basic Web Server
  **/
 
+import HTTP1_0.heartbeatThread;
+
 import java.io.*;
-import java.net.*;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-import static HTTP1_0.BasicWebServer.ServernameToDocumentRoot;
-import static HTTP1_0.BasicWebServer.cachefuction;
+import static MultiThreadServer.MultiThreadWebServer.ServernameToDocumentRoot;
+import static MultiThreadServer.MultiThreadWebServer.cachefuction;
 
-class WebRequestHandler {
+class MultiThreadRequestHandler {
 
     static boolean _DEBUG = true;
     static boolean _HEARTBEAT=false;
@@ -30,8 +33,7 @@ class WebRequestHandler {
     public static Socket connSocket;
     BufferedReader inFromClient;
     DataOutputStream outToClient;
-    static boolean writeData;
-
+    static boolean isStart;
     heartbeatThread heart=new heartbeatThread();
 
     String urlName;
@@ -39,8 +41,8 @@ class WebRequestHandler {
     File fileInfo;
 
 
-    public WebRequestHandler(Socket connectionSocket,
-                             String WWW_ROOT) throws Exception {
+    public MultiThreadRequestHandler(Socket connectionSocket,
+                                     String WWW_ROOT) throws Exception {
         reqCount++;
         this.WWW_ROOT = WWW_ROOT;
         this.connSocket = connectionSocket;
@@ -57,7 +59,7 @@ class WebRequestHandler {
 
     public void processRequest()//在这里正式开始处理request
     {
-            writeData=true;
+
 
         try {
             mapURL2File();
@@ -164,8 +166,8 @@ class WebRequestHandler {
             fileName = WWW_ROOT + DocumentRoot +"\\"+ urlName;
             ProcessBuilder processBuilder = new ProcessBuilder();
             processBuilder.command("python",fileName);
-            Process process = null;
-            process = processBuilder.start();
+            //Process process = null;
+            //process = processBuilder.start();
             //BufferedReader bfReader=new BufferedReader(new InputStreamReader(process.getInputStream()));
             int temp=urlName.lastIndexOf("\\");//更改请求文件为cgi.html
             String temp_1=urlName.substring(0,temp);
@@ -190,20 +192,6 @@ class WebRequestHandler {
 
     private void outputResponseHeader() throws Exception {
         InetAddress host = connSocket.getInetAddress();
-        if(ifModifiedSince!=null) {
-            Long tempIfMS = ifModifiedSince.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-            Updatelastmodified();
-            Long tempLastM = lastModified.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-            if (tempLastM > tempLastM) {
-                outToClient.writeBytes("Last-Modified:" + df.format(lastModified));
-            }
-            else{
-                writeData=false;
-                outToClient.writeBytes("HTTP/1.0 304\r\n");
-                return;
-            }
-        }
-
         outToClient.writeBytes("HTTP/1.0 200 Document Follows\r\n");
 //        outToClient.writeBytes("Set-Cookie: MyCool433Seq12345\r\n");
         outToClient.writeBytes("Server: " + host.getHostAddress() + "\r\n");
@@ -215,7 +203,14 @@ class WebRequestHandler {
             outToClient.writeBytes("Content-Type: text/html\r\n");
         else
             outToClient.writeBytes("Content-Type: text/plain\r\n");
-
+        if(ifModifiedSince!=null) {
+            Long tempIfMS = ifModifiedSince.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+            Updatelastmodified();
+            Long tempLastM = lastModified.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+            if (tempLastM > tempLastM) {
+                outToClient.writeBytes("Last-Modified:" + df.format(lastModified));
+            }
+        }
     }
 
     private void Updatelastmodified() throws Exception {
@@ -237,10 +232,6 @@ class WebRequestHandler {
     }
 
     private void outputResponseBody() throws Exception {
-        if(writeData==false)
-        {
-            return;
-        }
 
         int numOfBytes = (int) fileInfo.length();
         outToClient.writeBytes("Content-Length: " + numOfBytes + "\r\n");
@@ -279,7 +270,7 @@ class WebRequestHandler {
 //    }
 private void heartbeatHeader() throws Exception {
     InetAddress host = connSocket.getInetAddress();
-    outToClient.writeBytes("HTTP/1.0 200 heartbeat started\r\n");
+    outToClient.writeBytes("HTTP/1.0 200 heartbeat start\r\n");
 //        outToClient.writeBytes("Set-Cookie: MyCool433Seq12345\r\n");
 //    outToClient.writeBytes("Server: " + host.getHostAddress() + "\r\n");
 //    if(ifModifiedSince!=null) {
