@@ -4,28 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b068f9-54d4-44b9-b057-dd732dc9ddbd" name="变更" comment="client端可以和webserver互通">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Client/makeNewModi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/EchoServerV12/EchoServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HTTP1_0/Monitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HTTP1_0/MonitorThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HTTP1_0/heartbeatThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MultiThreadServer/MultiThreadRequestHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MultiThreadServer/MultiThreadWebServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MultiThreadServer/ServiceThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SimpleClient/ClientThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SimpleClient/SHTTPTestClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SimpleClient/SimpleServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SimpleClient/SimpleServiceThread.java" afterDir="false" />
+    <list default="true" id="d4b068f9-54d4-44b9-b057-dd732dc9ddbd" name="变更" comment="心跳检测,多线程,cgi文件,modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/file/file1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/file/file2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/file/file3.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HTTP1_0/BasicWebServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HTTP1_0/BasicWebServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HTTP1_0/WebRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HTTP1_0/WebRequestHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,9 +59,10 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="warning:load" />
+      <command value="getInitOps" />
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.SHTTPTestClient">
+  <component name="RunManager" selected="应用程序.Server">
     <configuration name="BasicWebServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HTTP1_0.BasicWebServer" />
       <module name="assignment3" />
@@ -171,10 +153,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Server" />
+        <item itemvalue="应用程序.Client" />
         <item itemvalue="应用程序.BasicWebServer" />
         <item itemvalue="应用程序.Monitor" />
-        <item itemvalue="应用程序.Client" />
-        <item itemvalue="应用程序.Server" />
         <item itemvalue="应用程序.EchoServer" />
       </list>
     </recent_temporary>
@@ -223,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667732385146</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="心跳检测,多线程,cgi文件,modified">
+      <created>1668130317653</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668130317653</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,7 +230,8 @@
     <MESSAGE value="导入文件" />
     <MESSAGE value="编写自己的client端" />
     <MESSAGE value="client端可以和webserver互通" />
-    <option name="LAST_COMMIT_MESSAGE" value="client端可以和webserver互通" />
+    <MESSAGE value="心跳检测,多线程,cgi文件,modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="心跳检测,多线程,cgi文件,modified" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -262,31 +252,6 @@
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/EchoServerV3/Server.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/EchoServerV3/Server.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/EchoServerV3/Server.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/EchoServerV3/Server.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/EchoServerV3/Server.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/EchoServerV3/EchoLineReadWriteHandler.java</url>
           <line>46</line>
           <option name="timeStamp" value="32" />
@@ -300,6 +265,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/HTTP1_0/WebRequestHandler.java</url>
           <line>72</line>
           <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/EchoServerV3/Server.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/EchoServerV3/Server.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

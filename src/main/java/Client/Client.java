@@ -28,7 +28,7 @@ public class Client {
 
         try {
             // create server socket
-            Socket helloSocket = new Socket(InetAddress.getByName("10.30.77.4"), ClientPort);
+            Socket helloSocket = new Socket(InetAddress.getByName("127.0.0.1"), ClientPort);
 
             System.out.println("Client started; Sending to  " + ClientPort);
 
